@@ -1,4 +1,7 @@
 import threading
+from datetime import datetime
+
+unit_types = []
 
 # Define an event
 scanner_event = threading.Event()
@@ -9,7 +12,7 @@ def on_scan_complete(data):
 
 # Function to simulate a scan event
 def simulate_scan():
-    scanned_data = "Sample QR Code Data"
+    scanned_data = "floor 2 door"
     on_scan_complete(scanned_data)
     scanner_event.set()
 
@@ -21,3 +24,12 @@ scan_thread.start()
 scanner_event.wait()
 
 print("Scan complete.")
+
+
+
+then = datetime(2012, 3, 5, 23, 8, 15)        # Random date in the past
+now  = datetime.now()                         # Now
+duration = now - then                         # For build-in functions
+duration_in_s = duration.total_seconds()      # Total number of seconds between dates
+
+print(duration_in_s)
